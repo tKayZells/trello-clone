@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 export const NavbarContainer =  styled.nav`
     width: 100%;
-    border-bottom: 1px solid black;
+    border-bottom: 0.5px solid black;
     display: flex;
     justify-content: space-around;
     background-color: #B3B6B7;
@@ -19,7 +19,15 @@ export const Title = styled.h1`
     text-transform: uppercase;
 `;
 
+export const Div = styled.div`
+    display: flex;
+    position: relative;
+`;
+
 export const P = styled.p`
-    font-size: 1.5rem;
+    font-size: 0.7rem;
     margin-right: 2rem;
+    position: absolute;
+    bottom: 12px;
+    left: 30px;
 `;
