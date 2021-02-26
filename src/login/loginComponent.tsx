@@ -1,4 +1,6 @@
 import { Form, Formik, useField } from "formik";
+import { ILoginComponentProps } from "./interfaces/ILoginComponentProps";
+import { IUserCredentials } from "./interfaces/IUserCredentials";
 import * as CustomStyled from "./loginComponent.styles";
 
 
@@ -8,13 +10,13 @@ const FormInput = ( { label, ...props } : any ) => {
     return (
         <>
             <CustomStyled.Label htmlFor={ props.id || props.name}>{ label }</CustomStyled.Label>
-            <CustomStyled.Input { ...field } { ...props } />
+            <CustomStyled.Input id={ props.id || props.name } { ...field } { ...props } />
             { meta.touched && meta.error ? <span style={{ fontSize : '0.6rem', color : 'red', textTransform : 'lowercase' }}> { meta.error } </span> : null }
         </>
     )
 }
 
-function Login() {
+function Login( { onSubmitHandle, ...props } : ILoginComponentProps ) {
 
     const validate = ( values : any ) => {
         const errors : { [ k : string ] : any } = {};
@@ -48,8 +50,8 @@ function Login() {
                             password: ""
                         }}
                         validate={ validate }
-                        onSubmit={ values => console.log(values) }>
-                            <Form id="login_form">
+                        onSubmit={ (values : IUserCredentials) => onSubmitHandle(values) }>
+                            <Form id="login_form" aria-label="Iniciar sesion">
                                 <CustomStyled.InputContainer>
                                     <FormInput label="username" name="username" type="text" placeholder="demo" />
                                 </CustomStyled.InputContainer>

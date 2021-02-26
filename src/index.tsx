@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import Login from './login/loginComponent';
+import LoginVM from './login/loginViewModel';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Login />
+    <LoginVM />
   </React.StrictMode>,
   document.getElementById('root')
 );
