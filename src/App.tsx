@@ -3,6 +3,7 @@ import Navbar from "./components/navbar/Navbar"
 import './App.css';
 import AddComponent from './components/addComponent/AddComponent';
 import {defaultTask} from  "./utils/defaultTask"
+import GlobalStyle from "./Global.styles"
 
 function App() {
   const [taskList, setTasklist] = useState<Array<Todo>>(defaultTask)
@@ -19,11 +20,13 @@ function App() {
   }
   
   return (
-    <div className="App">
-      <Navbar/>
-      <AddComponent addTask={addTask}/>
-      <h3>trello</h3>
-    </div>
+      <>
+        <GlobalStyle/>
+        <Navbar/>
+        <AddComponent addTask={addTask}/>
+        <h3>trello</h3>
+
+      </>
   );
 }
 
