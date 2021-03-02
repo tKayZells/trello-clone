@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import LoginVM from './login/loginViewModel';
+import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <LoginVM />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
