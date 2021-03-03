@@ -13,6 +13,7 @@ import {
 import LoginVM from './login/loginViewModel';
 import NotFoundComponent from './components/404/notFound';
 import { AuthProvider } from "./common/auth.context";
+import GroupVM from './group/groupViewModel';
 
 function App() {
   const [taskList, setTasklist] = useState<Array<Todo>>(defaultTask)
@@ -37,6 +38,9 @@ function App() {
         <Switch>
           <Route exact path="/">
             <LoginVM />
+          </Route>
+          <Route path="/g">
+            <GroupVM />
           </Route>
           <Route path="/app">
             <div className="App">
