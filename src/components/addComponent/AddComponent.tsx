@@ -57,7 +57,7 @@ return (
     } }
     >
         {
-             ({values, errors, isSubmitting, handleChange, handleSubmit, handleReset})=> (
+             ({values, errors, isSubmitting})=> (
                  
                 <Form >
                     <Container>

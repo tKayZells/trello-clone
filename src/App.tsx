@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import Navbar from "./components/navbar/Navbar"
 import './App.css';
 import AddComponent from './components/addComponent/AddComponent';
+import TaskComponent from "./components/taskComponent/TaskComponent"
 import {defaultTask} from  "./utils/defaultTask"
 import GlobalStyle from "./Global.styles"
 import {
@@ -21,6 +22,7 @@ function App() {
     ...taskList,
     {
       titulo: newTask,
+      descripcion: "",
       completed: false
     }
   ]);
@@ -39,6 +41,16 @@ function App() {
             <Navbar/>
             <AddComponent addTask={addTask}/>
             <h3>trello</h3>
+            {
+              taskList.map((item, index)=> (
+                <>
+                <TaskComponent
+                 key={index}
+                task={item}/>
+                </>
+              ))
+            }
+            
           </div>
         </Route>
         <Route path="*">
