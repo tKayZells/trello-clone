@@ -30,18 +30,37 @@ const RouteGuard = ({ children, ...props } : any) => {
 }
 
 function App() {
-  const [taskList, setTasklist] = useState<Array<Todo>>(defaultTask)
+  const [taskList, setTasklist] = useState<Array<Todo>>(defaultTask);
+  const [edit, setEdit] = useState<boolean>(false);
 
-  const addTask: AddTask = (newTask: string)=>{
-  console.log(newTask)
+  const addTask: AddNewTask = (newTask: Todo)=>{
   setTasklist([
     ...taskList,
-    {
-      titulo: newTask,
-      descripcion: "",
-      completed: false
-    }
-  ]);
+    newTask
+  ])
+  }
+
+  const removeTask: RemoveTask = (task:Todo)=> {
+    console.log("removiendo")
+    const newTaskList = taskList.filter(item => item.titulo !== task.titulo);
+    setTasklist(newTaskList);
+  }
+
+  const toggleCompleted = (task:Todo)=> {
+    const newTaskList = taskList.map(item=> {
+      if(item === task){
+        return{
+          ...item,
+          completed:!item.completed
+        }
+      }
+      return item;
+    });
+    setTasklist(newTaskList);
+  }
+
+  const editTask = ()=>{
+
   }
   
   return (
@@ -56,14 +75,19 @@ function App() {
           <RouteGuard path="/app">
             <div className="App">
               <Navbar/>
-              <AddComponent addTask={addTask}/>
+              <AddComponent 
+              edit={!edit}
+              addTask={addTask}
+              />
               <h3>trello</h3>
               {
               taskList.map((item, index)=> (
                 <>
                 <TaskComponent
                  key={index}
-                task={item}/>
+                task={item}
+                removeTask={removeTask}
+                toggleCompleted={toggleCompleted}/>
                 </>
               ))
             }

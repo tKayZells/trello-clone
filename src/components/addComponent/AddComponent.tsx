@@ -1,48 +1,33 @@
-import React, {ReactEventHandler, SyntheticEvent, useState} from 'react'
-import { Form, Formik, useField, Field } from "formik";
-import {Container, Input, Button, Span} from "./AddComponent.styles"
+import React from 'react'
+import { Form, Formik, Field } from "formik";
+import {Container, Input, Button} from "./AddComponent.styles"
 
-
-
-//const CustomInput = ({ label, ...props } : any )=> {
-//    const [field, meta, helpers] = useField(props);
-//    
-//    return (
-//        <>
-//            <Input  id={ props.id || props.name} { ...field } { ...props }/>
-//            { 
-//            meta.touched && meta.error ? 
-//            <Span style={{ fontSize : '0.6rem', color : 'red', textTransform : 'lowercase' }}> { meta.error } </Span> :
-//             null }
-//        </>
-//    )  
-//}
- 
-interface FormikValues {
-     titulo: string;
-     descripcion: string;
-}
 interface AddTaskProps {
-    addTask: AddTask;
+    addTask: AddNewTask;
+    edit: boolean;
  }
 
-const AddComponent: React.FC<AddTaskProps> = ({addTask}) => {
+const AddComponent: React.FC<AddTaskProps> = ({addTask, edit}) => {
 
 
-const initialValues: FormikValues = {
+const initialValues: Todo = {
     titulo: "",
     descripcion: "",
+    completed:false,
 }
 
 
 return (
     <Formik
       initialValues={initialValues}
-      onSubmit={(data:any, {setSubmitting, resetForm, })=>{
-        //console.log(data)
+      onSubmit={(data:Todo, {setSubmitting, resetForm, })=>{
         setSubmitting(true)
+        addTask({
+            titulo: data.titulo,
+            descripcion: data.descripcion,
+            completed: false
+        })
         setSubmitting(false)
-        addTask(data)
         resetForm()
     }}
     validate={values=>{
