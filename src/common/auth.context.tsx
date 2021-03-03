@@ -6,7 +6,8 @@ interface IUserData {
 
 interface IAuth {
     signIn : ( user : IUserData ) => void,
-    signOut : () => void
+    signOut : () => void,
+    user : string
 }
 
 const AuthContext = React.createContext({});
