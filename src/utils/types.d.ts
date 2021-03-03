@@ -1,5 +1,6 @@
 
 type Todo = {
-    titulo:string;
+    titulo: string;
+    descripcion: string;
     completed: boolean;
 };

@@ -6,7 +6,6 @@ import styled from "styled-components"
     width: 400px;
     heigh: 400px;
     margin: 2rem;
-    border: 0.5px solid #000000;
     padding: 1.5rem;
     border-radius: 5px;
 `;
