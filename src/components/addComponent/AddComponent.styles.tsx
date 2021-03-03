@@ -3,9 +3,12 @@ import styled from "styled-components"
  const Container = styled.div`
     display: flex;
     flex-direction: column;
-    width: 300px;
-    heigh: 300px;
+    width: 400px;
+    heigh: 400px;
     margin: 2rem;
+    border: 0.5px solid #000000;
+    padding: 1.5rem;
+    border-radius: 5px;
 `;
 
  const Input = styled.input`
@@ -19,7 +22,7 @@ import styled from "styled-components"
     padding: 1.2rem;
 `;
 
- const Button = styled.button `
+ const Button = styled.button<{display:boolean}> `
     color: #FBFCFC;
     font-size: 1.8rem;
     text-align: center;
@@ -27,6 +30,13 @@ import styled from "styled-components"
     padding: 0.5rem;
     border-radius: 5px;
     width: 100%;
+    display: ${props => props.display ? "none" : "flex"}
 `;
 
-export {Container,Input, Button}
+ const Span = styled.span`
+    font.size: 1rem;
+    color: red;
+    text-transform: lowercase;
+`;
+
+export {Container,Input, Button, Span}

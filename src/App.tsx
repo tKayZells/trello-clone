@@ -3,6 +3,7 @@ import Navbar from "./components/navbar/Navbar"
 import './App.css';
 import AddComponent from './components/addComponent/AddComponent';
 import {defaultTask} from  "./utils/defaultTask"
+import GlobalStyle from "./Global.styles"
 import {
   BrowserRouter as Router,
   Switch,
@@ -27,6 +28,8 @@ function App() {
   }
   
   return (
+    <>
+    <GlobalStyle/>
     <AuthProvider>
       <Router>
         <Switch>
@@ -46,6 +49,7 @@ function App() {
         </Switch>
       </Router>
     </AuthProvider>
+    </>
   );
 }
 

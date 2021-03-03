@@ -1,15 +1,12 @@
 import styled from "styled-components"
 
-
 export const NavbarContainer =  styled.nav`
     width: 100%;
     border-bottom: 0.5px solid black;
     display: flex;
     justify-content: space-around;
-    background-color: #B3B6B7;
-    color: #FBFCFC;
     align-items: center;
-    padding: 0 1.5rem;
+    padding: 1rem 1.5rem;
     text-align: center;
 
 `;
@@ -17,11 +14,13 @@ export const NavbarContainer =  styled.nav`
 export const Title = styled.h1`
     font-size: 1.5rem;
     text-transform: uppercase;
+  
 `;
 
 export const Div = styled.div`
     display: flex;
     position: relative;
+   
 `;
 
 export const P = styled.p`
@@ -31,3 +30,5 @@ export const P = styled.p`
     bottom: 12px;
     left: 30px;
 `;
+
+
