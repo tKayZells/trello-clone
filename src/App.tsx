@@ -4,6 +4,13 @@ import './App.css';
 import AddComponent from './components/addComponent/AddComponent';
 import {defaultTask} from  "./utils/defaultTask"
 import GlobalStyle from "./Global.styles"
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+import LoginVM from './login/loginViewModel';
+import NotFoundComponent from './components/404/notFound';
 
 function App() {
   const [taskList, setTasklist] = useState<Array<Todo>>(defaultTask)
@@ -20,13 +27,26 @@ function App() {
   }
   
   return (
-      <>
-        <GlobalStyle/>
-        <Navbar/>
-        <AddComponent addTask={addTask}/>
-        <h3>trello</h3>
-
-      </>
+    <>
+    <GlobalStyle/>
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <LoginVM />
+        </Route>
+        <Route path="/app">
+          <div className="App">
+            <Navbar/>
+            <AddComponent addTask={addTask}/>
+            <h3>trello</h3>
+          </div>
+        </Route>
+        <Route path="*">
+          <NotFoundComponent />
+        </Route>
+      </Switch>
+    </Router>
+    </>
   );
 }
 
