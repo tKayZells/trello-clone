@@ -15,38 +15,4 @@ const Title = styled.h2`
     padding: 0.5rem;
 `;
 
-const InputContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    padding: 0;
-`
-
-const Label = styled.label`
-    color: #9b9b9b;
-    font-size: 0.8rem;
-    padding: 0.5rem 0;
-    text-transform: lowercase;
-`;
-
-const Input = styled.input`
-    padding: 0.35rem;
-    font-size: 1rem;
-`;
-
-const InputButton = styled.input`
-    background: black;
-    color: white;
-    padding: 0.5rem 1rem;
-    align-self: flex-end;
-    cursor: pointer;
-
-    border: none;
-    border-radius: 0.3rem;
-
-    &:hover {
-        background: #3a3a3a;
-    }
-
-`;
-
-export { Card, Title, InputContainer, Input, Label, InputButton };
+export { Card, Title };
