@@ -47,7 +47,7 @@ function GroupVM(){
     }
 
     return (
-        <div style={{ display : 'flex', justifyContent : "space-around"}}>
+        <div style={{ display : 'flex', justifyContent : "start"}}>
             { 
                 groupList.map( (group, idx) => 
                     <Group 
@@ -62,7 +62,7 @@ function GroupVM(){
                         }} />
                 )
             }
-            <AddGroup onSubmitHandler={ newGroupHandler } styles={{ alignSelf : "start" }}  />
+            <AddGroup onSubmitHandler={ newGroupHandler } styles={{ alignSelf : "start", margin: '1rem 1.5rem' }}  />
         </div>
     )
 }

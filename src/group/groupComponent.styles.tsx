@@ -2,8 +2,9 @@ import styled from "styled-components";
 
 const Card = styled.div`
     background: white;
-    width: 250px;
+    width: 350px;
     padding: 1rem;
+    margin: 1rem 1.5rem;
     border-radius: 0.3rem;
     /** Shadows from the awesome tailwindcss *wink* *wink* **/
     --tw-shadow: 0 4px 6px -1px rgba(0,0,0,0.1),0 2px 4px -1px rgba(0,0,0,0.06);
@@ -18,8 +19,7 @@ const BgCard = styled.div`
     border: 0.5px dashed rgba(0,0,0,0.35);
 `;
 
-const List = styled.ul`
-    list-style: none;
+const List = styled.div`
     padding: 0.5rem
 `;
 
