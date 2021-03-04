@@ -86,13 +86,11 @@ function App() {
               <h3>trello</h3>
               {
               taskList.map((item, index)=> (
-                <>
                 <TaskComponent
                  key={index}
                 task={item}
                 removeTask={removeTask}
                 toggleCompleted={toggleCompleted}/>
-                </>
               ))
             }
             </div>

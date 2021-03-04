@@ -3,10 +3,21 @@ import InputContainer from "../components/form/container/Container.style";
 import FormInput from "../components/form/Input/FormInput";
 import InputButton from "../components/form/button/Button.style";
 import * as CustomStyles from "./groupComponent.styles";
+import TaskComponent from "../components/taskComponent/TaskComponent";
+import AddComponent from "../components/addComponent/AddComponent";
 
-function Group() {
+interface TaskOperations {
+    addTask: AddNewTask,
+    removeTask: RemoveTask,
+    toggleCompleted : (task:Todo)=> void
+}
+interface IGroupProps {
+    taskList : Array<Todo>,
+    editState : boolean,
+    taskOperations : TaskOperations        
+}
 
-    const tempArr = ( new Array(9) ).fill(0);
+function Group( { taskList, editState, taskOperations, ...props } : IGroupProps  ) {
 
     return (
         <>
@@ -14,7 +25,20 @@ function Group() {
                 <CustomStyles.Title> Dummyd text</CustomStyles.Title>
                 <CustomStyles.Bar type="dashed" />
                 <CustomStyles.List>
-                    { tempArr.map( (_val, idx) => <li key={idx} >tarea de prueba aca</li> ) }
+                    <AddComponent 
+                        edit={!editState}
+                        addTask={taskOperations.addTask}
+                    />
+                    { 
+                        taskList.map( (item : Todo, idx : number) => 
+                        
+                        <TaskComponent
+                            key={idx}
+                            task={item}
+                            removeTask={taskOperations.removeTask}
+                            toggleCompleted={taskOperations.toggleCompleted}/>
+                        ) 
+                    }
                 </CustomStyles.List>
             </CustomStyles.Card>
             <CustomStyles.BgCard>
