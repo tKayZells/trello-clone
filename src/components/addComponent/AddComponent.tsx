@@ -21,6 +21,7 @@ return (
     <Formik
       initialValues={initialValues}
       onSubmit={(data:Todo, {setSubmitting, resetForm, })=>{
+          
         setSubmitting(true)
         addTask({
             titulo: data.titulo,
