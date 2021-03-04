@@ -12,10 +12,23 @@ interface IAddGroupProps {
 }
 
 function AddGroup({ onSubmitHandler, styles, ...props } : IAddGroupProps){
+
+    
+    const validate = ( values : INewGroupParams ) => {
+        const errors : { [ k : string ] : any } = {};
+        
+        if(!values.title || values.title.length < 1){
+            errors.title = 'Required';
+        }
+        return errors;
+    };
+
+
     return (
         <CustomStyles.BgCard style={ styles }>
             <Formik 
                 initialValues={{ title : "" }}
+                validate={ validate }
                 onSubmit={ ( values : INewGroupParams ) => onSubmitHandler(values) }>
                 <Form>
                     <CustomStyles.Title color="#969696" style={{ fontWeight: 300 }}>Nuevo Grupo</CustomStyles.Title>
