@@ -14,6 +14,7 @@ import {
 import LoginVM from './login/loginViewModel';
 import NotFoundComponent from './components/404/notFound';
 import { AuthProvider, useAuth } from "./common/auth.context";
+import GroupVM from './group/groupViewModel';
 
 const RouteGuard = ({ children, ...props } : any) => {
   
@@ -71,6 +72,9 @@ function App() {
         <Switch>
           <Route exact path="/">
             <LoginVM />
+          </Route>
+          <Route path="/g">
+            <GroupVM />
           </Route>
           <RouteGuard path="/app">
             <div className="App">

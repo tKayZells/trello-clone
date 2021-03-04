@@ -1,20 +1,11 @@
-import { Form, Formik, useField } from "formik";
+import { Form, Formik } from "formik";
 import { ILoginComponentProps } from "./interfaces/ILoginComponentProps";
 import { IUserCredentials } from "./interfaces/IUserCredentials";
+import InputContainer from "../components/form/container/Container.style";
+import FormInput from "../components/form/Input/FormInput";
+import InputButton from "../components/form/button/Button.style";
 import * as CustomStyled from "./loginComponent.styles";
 
-
-const FormInput = ( { label, ...props } : any ) => {
-
-    const [field, meta] = useField(props);
-    return (
-        <>
-            <CustomStyled.Label htmlFor={ props.id || props.name}>{ label }</CustomStyled.Label>
-            <CustomStyled.Input id={ props.id || props.name } { ...field } { ...props } />
-            { meta.touched && meta.error ? <span style={{ fontSize : '0.6rem', color : 'red', textTransform : 'lowercase' }}> { meta.error } </span> : null }
-        </>
-    )
-}
 
 function Login( { onSubmitHandle, ...props } : ILoginComponentProps ) {
 
@@ -52,15 +43,15 @@ function Login( { onSubmitHandle, ...props } : ILoginComponentProps ) {
                         validate={ validate }
                         onSubmit={ (values : IUserCredentials) => onSubmitHandle(values) }>
                             <Form id="login_form" aria-label="Iniciar sesion">
-                                <CustomStyled.InputContainer>
+                                <InputContainer>
                                     <FormInput label="username" name="username" type="text" placeholder="demo" />
-                                </CustomStyled.InputContainer>
-                                <CustomStyled.InputContainer>
+                                </InputContainer>
+                                <InputContainer>
                                     <FormInput label="password" name="password" type="password" />                                    
-                                </CustomStyled.InputContainer>
-                                <CustomStyled.InputContainer style={{ marginTop: '1rem'}}>
-                                    <CustomStyled.InputButton type="submit" value="Enviar" />
-                                </CustomStyled.InputContainer>
+                                </InputContainer>
+                                <InputContainer style={{ marginTop: '1rem'}}>
+                                    <InputButton type="submit" value="Enviar" />
+                                </InputContainer>
                             </Form>
                     </Formik>
                 </section>
