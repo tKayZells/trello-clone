@@ -1,6 +1,8 @@
 import React from 'react'
 import { Form, Formik, Field } from "formik";
-import {Container, Input, Button} from "./AddComponent.styles"
+import {Container, Title } from "./AddComponent.styles"
+import { Input } from "../form/Input/FormInput.style";
+import InputButton from "../form/button/Button.style";
 
 interface AddTaskProps {
     addTask: AddNewTask;
@@ -43,16 +45,18 @@ return (
     >
         {
              ({values, errors, isSubmitting})=> (
-                 
-                <Form >
-                    <Container>
-                        <Field as={Input} type="input"  name="titulo" placeholder="titulo" value={values.titulo}/>
-                        {errors.titulo}
-                        <Field as={Input} type="input"  name="descripcion" placeholder="descripcion" value={values.descripcion}/>
-                        {errors.descripcion}
-                        <Button display={isSubmitting} type="submit">Submit</Button>
-                    </Container>
-                </Form>
+                <div style={{  margin: '0.5rem'}}>
+                    <Form>
+                        <Title color="#969696" style={{ fontWeight: 300 }}>Nueva Tarea</Title>
+                        <Container>
+                            <Field as={Input} type="input"  name="titulo" placeholder="titulo" value={values.titulo}/>
+                            {errors.titulo}
+                            <Field as={Input} style={{marginTop : '0.5rem'}} type="input"  name="descripcion" placeholder="descripcion" value={values.descripcion}/>
+                            {errors.descripcion}
+                            <InputButton style={{marginTop : '0.5rem'}} type="submit" value="Agregar Tarea" />
+                        </Container>
+                    </Form>
+                </div>
              )
         }
      

@@ -3,10 +3,6 @@ import styled from "styled-components"
  const Container = styled.div`
     display: flex;
     flex-direction: column;
-    width: 400px;
-    heigh: 400px;
-    margin: 2rem;
-    padding: 1.5rem;
     border-radius: 5px;
 `;
 
@@ -38,4 +34,16 @@ import styled from "styled-components"
     text-transform: lowercase;
 `;
 
-export {Container,Input, Button, Span}
+const Title = styled.h2.attrs((props : any) => ({
+    textAlign : props.textAlign || 'center',
+    color : props.color || "black",
+    fontSize : props.fontSize || "1.5rem"
+}))`
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    color: ${ props => props.color };
+    text-align : ${ props => props.textAlign };
+    font-size : ${ props => props.fontSize };
+`;
+
+export {Container,Input, Button, Span, Title}
