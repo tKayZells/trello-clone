@@ -2,10 +2,12 @@
 import { defaultTask } from  "../utils/defaultTask";
 import { useState } from "react";
 import Group from "./groupComponent";
+import AddGroup from "./addGroupComponent";
+import INewGroupParams from "./interfaces/INewGroupParams";
 
 function GroupVM(){
 
-
+    const [ groupList, setGroups ] = useState<Array<string>>([])
     const [taskList, setTasklist] = useState<Array<Todo>>(defaultTask);
     const [edit, setEdit] = useState<boolean>(false);
   
@@ -39,16 +41,29 @@ function GroupVM(){
   
     }
 
-    
+    const newGroupHandler = ( values : INewGroupParams ) => { 
+        setGroups([...groupList, values.title ])
+        console.log("dadsad");
+    }
+
     return (
-        <Group 
-            taskList={taskList} 
-            editState={edit} 
-            taskOperations={{
-                addTask: addTask,
-                removeTask: removeTask,
-                toggleCompleted : toggleCompleted
-            }} />
+        <div style={{ display : 'flex', justifyContent : "space-around"}}>
+            { 
+                groupList.map( (group, idx) => 
+                    <Group 
+                        key={idx}
+                        taskList={taskList} 
+                        title={group}
+                        editState={edit} 
+                        taskOperations={{
+                            addTask: addTask,
+                            removeTask: removeTask,
+                            toggleCompleted : toggleCompleted
+                        }} />
+                )
+            }
+            <AddGroup onSubmitHandler={ newGroupHandler } styles={{ alignSelf : "start" }}  />
+        </div>
     )
 }
 
