@@ -4,7 +4,7 @@ import { IUserCredentials } from "./interfaces/IUserCredentials";
 import InputContainer from "../components/form/container/Container.style";
 import FormInput from "../components/form/Input/FormInput";
 import InputButton from "../components/form/button/Button.style";
-import * as CustomStyled from "./loginComponent.styles";
+import * as CustomStyled from "./login.styles";
 
 
 function Login( { onSubmitHandle, ...props } : ILoginComponentProps ) {

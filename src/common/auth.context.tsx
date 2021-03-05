@@ -4,13 +4,13 @@ interface IUserData {
     name : string,
 }
 
-interface IAuth {
+export interface IAuth {
     signIn : ( user : IUserData ) => void,
     signOut : () => void,
     user : string
 }
 
-const AuthContext = React.createContext({});
+const AuthContext = React.createContext<IAuth | null>(null);
 
 const useAuth = () : IAuth => useContext(AuthContext) as IAuth;
 
@@ -37,4 +37,4 @@ const AuthProvider = ({ children, ...props } : any) =>{
     );
 }
 
-export {AuthProvider, useAuth};
+export {AuthProvider, AuthContext, useAuth};
