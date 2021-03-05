@@ -8,7 +8,7 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import LoginVM from './login/loginViewModel';
+import LoginPresenter from './login/login.presenter';
 import NotFoundComponent from './components/404/notFound';
 import { AuthProvider, useAuth } from "./common/auth.context";
 import GroupVM from './group/groupViewModel';
@@ -36,7 +36,7 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/">
-            <LoginVM />
+            <LoginPresenter />
           </Route>
           <RouteGuard path="/app">
             <div className="App">
