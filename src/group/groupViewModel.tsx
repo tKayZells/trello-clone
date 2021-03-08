@@ -12,6 +12,7 @@ function GroupVM(){
     const [edit, setEdit] = useState<boolean>(false);
   
     const addTask: AddNewTask = (newTask: Todo)=>{
+      console.log(newTask)
     setTasklist([
       ...taskList,
       newTask
@@ -19,7 +20,7 @@ function GroupVM(){
     }
   
     const removeTask: RemoveTask = (task:Todo)=> {
-      console.log("removiendo")
+     
       const newTaskList = taskList.filter(item => item.titulo !== task.titulo);
       setTasklist(newTaskList);
     }
@@ -43,7 +44,8 @@ function GroupVM(){
 
     const newGroupHandler = ( values : INewGroupParams ) => { 
         setGroups([...groupList, values.title ])
-        console.log("dadsad");
+        //const getNewList = taskList.filter((item)=> item.group === values.title)
+        //setTasklist(getNewList)
     }
 
     return (
