@@ -7,15 +7,17 @@ import InputButton from "../form/button/Button.style";
 interface AddTaskProps {
     addTask: AddNewTask;
     edit: boolean;
+    title: string;
  }
 
-const AddComponent: React.FC<AddTaskProps> = ({addTask, edit}) => {
+const AddComponent: React.FC<AddTaskProps> = ({addTask, edit, title}) => {
 
 
 const initialValues: Todo = {
     titulo: "",
     descripcion: "",
     completed:false,
+    group: ""
 }
 
 
@@ -28,7 +30,8 @@ return (
         addTask({
             titulo: data.titulo,
             descripcion: data.descripcion,
-            completed: false
+            completed: false,
+            group: title
         })
         setSubmitting(false)
         resetForm()

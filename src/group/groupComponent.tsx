@@ -15,6 +15,8 @@ interface IGroupProps {
 }
 
 function Group( { title, taskList, editState, taskOperations, ...props } : IGroupProps  ) {
+let newTaskList:Todo[];
+newTaskList = taskList.filter((item)=> item.group === title)
 
     return (
         <>
@@ -25,16 +27,19 @@ function Group( { title, taskList, editState, taskOperations, ...props } : IGrou
                     <AddComponent 
                         edit={!editState}
                         addTask={taskOperations.addTask}
+                        title={title}
                     />
                     { 
-                        taskList.map( (item : Todo, idx : number) => 
+                        newTaskList?.map( (item : Todo, idx : number) => 
+                            
+                                <TaskComponent
+                                key={idx}
+                                task={item}
+                                removeTask={taskOperations.removeTask}
+                                toggleCompleted={taskOperations.toggleCompleted}/>
+                           )  
+                     
                         
-                        <TaskComponent
-                            key={idx}
-                            task={item}
-                            removeTask={taskOperations.removeTask}
-                            toggleCompleted={taskOperations.toggleCompleted}/>
-                        ) 
                     }
                 </CustomStyles.List>
             </CustomStyles.Card>
